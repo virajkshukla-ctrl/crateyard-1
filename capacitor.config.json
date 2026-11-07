@@ -1,0 +1,8 @@
+{
+  "appId": "com.viionnlabs.crateyard",
+  "appName": "Crateyard",
+  "webDir": "www",
+  "backgroundColor": "#0f171c",
+  "android": { "allowMixedContent": false },
+  "ios": { "contentInset": "never" }
+}

@@ -1,0 +1,5 @@
+node_modules/
+www/
+android/app/build/
+ios/App/Pods/
+.env

@@ -1,0 +1,30 @@
+name: crateyard
+services:
+  app:
+    build: ..
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "8080"
+      DATABASE_URL: postgresql://crateyard:${PG_PASSWORD}@db:5432/crateyard
+      PGSSL: disable
+    ports:
+      - "127.0.0.1:8150:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: crateyard
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: crateyard
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U crateyard"]
+      interval: 5s
+      retries: 10
+volumes:
+  pgdata:

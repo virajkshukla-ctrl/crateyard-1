@@ -1,0 +1,27 @@
+{
+  "name": "crateyard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Crateyard: a 3D team shooter you can play in the browser or as a phone app.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "build:app": "node scripts/build-app.mjs",
+    "cap:sync": "npm run build:app && npx cap sync"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "pg": "^8.13.1",
+    "three": "0.128.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/ios": "^6.2.0"
+  }
+}
